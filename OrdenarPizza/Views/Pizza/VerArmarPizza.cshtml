@@ -14,31 +14,23 @@
         <div class="row" style="margin-left: 0px;margin-right: 0px;">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Tamaño y masa</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Salsa y queso</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Ingredientes</a>
+                    <a class="nav-link active" id="v-pills-tamaño-tab" data-toggle="pill" href="#v-pills-tamaño" role="tab" aria-controls="v-pills-tamaño" aria-selected="true">Tamaño y masa</a>
+                    <a class="nav-link" id="v-pills-salsa-tab" data-toggle="pill" href="#v-pills-salsa" role="tab" aria-controls="v-pills-salsa" aria-selected="false">Salsa y queso</a>
+                    <a class="nav-link" id="v-pills-ingredientes-tab" data-toggle="pill" href="#v-pills-ingredientes" role="tab" aria-controls="v-pills-ingredientes" aria-selected="false">Ingredientes</a>
                 </div>
             </div>
             @using (Html.BeginForm("OrdenarPizza", "Pizza", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="tab-pane fade show active" id="v-pills-tamaño" role="tabpanel" aria-labelledby="v-pills-tamaño-tab">
                         <div class="row">
                             <div class="col-sm">
                                 <br />
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBFuOUKVSNLuWmwocmrO6MbyinQjbKexVZVw&usqp=CAU" class="img-thumbnail alt="Pizza">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBFuOUKVSNLuWmwocmrO6MbyinQjbKexVZVw&usqp=CAU" class="img-thumbnail" alt="Pizza">
                             </div>
                             <div class="col-sm">
                                 <h3>Masa</h3>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="original" name="tipoMasa" value="Original" class="custom-control-input" checked="">
-                                    <label class="custom-control-label" for="original">Original</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="sarten" name="tipoMasa" value="Sartén" class="custom-control-input">
-                                    <label class="custom-control-label" for="sarten">Sartén</label>
-                                </div>
                                 <div class="custom-control custom-radio">
                                     <input type="radio" id="bordeConQueso" name="tipoMasa" value="Borde con queso" class="custom-control-input">
                                     <label class="custom-control-label" for="bordeConQueso">Borde con queso</label>
@@ -47,15 +39,23 @@
                                     <input type="radio" id="crunchy" name="tipoMasa" value="Crunchy" class="custom-control-input">
                                     <label class="custom-control-label" for="crunchy">Crunchy</label>
                                 </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="original" name="tipoMasa" value="Original" class="custom-control-input" checked="">
+                                    <label class="custom-control-label" for="original">Original</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="sarten" name="tipoMasa" value="Sartén" class="custom-control-input">
+                                    <label class="custom-control-label" for="sarten">Sartén</label>
+                                </div>
                             </div>
                             <div class="col-sm ">
                                 <h3>Tamaño</h3>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="dominator" name="tamañoPizza" value="Dominator" class="custom-control-input" checked="">
+                                    <input type="radio" id="dominator" name="tamañoPizza" value="Dominator" class="custom-control-input">
                                     <label class="custom-control-label" for="dominator">Dominator</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="grande" name="tamañoPizza" value="Grande" class="custom-control-input">
+                                    <input type="radio" id="grande" name="tamañoPizza" value="Grande" class="custom-control-input" checked="">
                                     <label class="custom-control-label" for="grande">Grande</label>
                                 </div>
                                 <div class="custom-control custom-radio">
@@ -67,23 +67,101 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="tab-pane fade" id="v-pills-salsa" role="tabpanel" aria-labelledby="v-pills-salsa-tab">
                         <div class="row">
                             <div class="col-sm">
                                 <br />
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBFuOUKVSNLuWmwocmrO6MbyinQjbKexVZVw&usqp=CAU" class="img-thumbnail alt="Pizza">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBFuOUKVSNLuWmwocmrO6MbyinQjbKexVZVw&usqp=CAU" class="img-thumbnail" alt="Pizza">
                             </div>
                             <div class="col-sm">
                                 <h3>Salsa</h3>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="alfredo" name="salsa" value="Alfredo" class="custom-control-input">
+                                    <label class="custom-control-label" for="alfredo">Alfredo</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="barbacoa" name="salsa" value="Barbacoa" class="custom-control-input">
+                                    <label class="custom-control-label" for="barbacoa">Barbacoa</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="tomate" name="salsa" value="Tomate casero" class="custom-control-input" checked="">
+                                    <label class="custom-control-label" for="tomate">Tomate casero</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="tomate" name="salsa" value="Tomate casero" class="custom-control-input">
+                                    <label class="custom-control-label" for="tomate">Tomate y ajo</label>
+                                </div>
                             </div>
                             <div class="col-sm ">
                                 <h3>Queso</h3>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="gouda" name="queso" value="Gouda" class="custom-control-input">
+                                    <label class="custom-control-label" for="gouda">Gouda</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="monterey" name="queso" value="Monterey Jack" class="custom-control-input">
+                                    <label class="custom-control-label" for="monterey">Monterey Jack</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="mozzarella" name="queso" value="Mozzarella" checked="" class="custom-control-input">
+                                    <label class="custom-control-label" for="mozzarella">Mozzarella</label>
+                                </div>
+                                <br />
                                 <button type="button" onclick="tabIngredientes()" class="btn btn-primary">Siguiente</button>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-message-tab">
-                        <input type="submit" value="Ordenar" class="btn btn-primary" />
+                    <div class="tab-pane fade" id="v-pills-ingredientes" role="tabpanel" aria-labelledby="v-pills-ingredientes-tab">
+                        <div class="row">
+                            <div class="col-sm">
+                                <br />
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBFuOUKVSNLuWmwocmrO6MbyinQjbKexVZVw&usqp=CAU" class="img-thumbnail" alt="Pizza">
+                            </div>
+                            <div class="col-sm">
+                                <h3>Proteína</h3>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="cerdo" value="Cerdo mechado">
+                                    <label class="custom-control-label" for="cerdo">Cerdo mechado</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="pollo" value="Pollo">
+                                    <label class="custom-control-label" for="pollo">Pollo</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="pepperoni" checked="" value="Pepperoni">
+                                    <label class="custom-control-label" for="pepperoni">Pepperoni</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="salami" value="Salami">
+                                    <label class="custom-control-label" for="salami">Salami</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="tocino" value="Tocino">
+                                    <label class="custom-control-label" for="tocino">Tocino</label>
+                                </div>
+                            </div>
+                            <div class="col-sm ">
+                                <h3>Adicionales</h3>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="cebolla" value="Cebolla">
+                                    <label class="custom-control-label" for="cebolla">Cebolla</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="jalapeño" value="Japapeño">
+                                    <label class="custom-control-label" for="jalapeño">Jalapeño</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="limon" value="Limón">
+                                    <label class="custom-control-label" for="limon">Limón</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="ingredientes" id="piña" value="Piña">
+                                    <label class="custom-control-label" for="piña">Piña</label>
+                                </div>
+                                <br />
+                                <input type="submit" value="Ordenar" class="btn btn-primary" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             }
@@ -93,10 +171,10 @@
 
 <script>
     function tabSalsa() {
-        $('#v-pills-profile-tab').tab('show');
+        $('#v-pills-salsa-tab').tab('show');
     }
-    function ingredientes() {
-        $('#v-pills-profile-tab').tab('show');
+    function tabIngredientes() {
+        $('#v-pills-ingredientes-tab').tab('show');
     }
 
 </script>

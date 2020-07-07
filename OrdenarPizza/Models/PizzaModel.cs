@@ -19,6 +19,14 @@ namespace OrdenarPizza.Models
         [DisplayName("Medida en centimetros de la pizzza")]
         public int centimetrosPizza { get; set; }
 
+        [Required(ErrorMessage = "*La salsa de la pizza es requerida.")]
+        [DisplayName("Salsa")]
+        public string salsa { get; set; }
+
+        [Required(ErrorMessage = "*El queso de la pizza es requerido.")]
+        [DisplayName("Queso")]
+        public string queso { get; set; }
+
         [Required(ErrorMessage = "*Al menos un ingrediente es requerido.")]
         [DisplayName("Ingredientes")]
         public string[] ingredientes { get; set; }
