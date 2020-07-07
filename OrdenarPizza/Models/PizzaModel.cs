@@ -7,7 +7,7 @@ namespace OrdenarPizza.Models
     {
         [Required(ErrorMessage = "*El tipo de masa es requerido.")]
         [DisplayName("Tipo de masa")]
-        private string TipoMasa { get; set; }
+        private string tipoMasa { get; set; }
 
         [DisplayName("Descripción del tipo de masa")]
         private string descripcionTipoMasa { get; set; }
