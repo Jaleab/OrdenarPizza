@@ -20,7 +20,7 @@
                     <a class="nav-link" id="v-pills-ingredientes-tab" data-toggle="pill" href="#v-pills-ingredientes" role="tab" aria-controls="v-pills-ingredientes" aria-selected="false">Ingredientes</a>
                 </div>
             </div>
-            @using (Html.BeginForm("OrdenarPizza", "Pizza", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("VerFactura", "Factura", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="tab-content" id="v-pills-tabContent">

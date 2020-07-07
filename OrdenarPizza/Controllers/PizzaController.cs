@@ -14,9 +14,5 @@ namespace OrdenarPizza.Controllers
         {
             return View();
         }
-
-        public ActionResult OrdenarPizza(PizzaModel pizza, string[] tipoMasa) {
-            return View(pizza);
-        }
     }
 }
