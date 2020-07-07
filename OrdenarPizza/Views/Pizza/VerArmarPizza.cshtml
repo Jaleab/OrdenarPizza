@@ -9,7 +9,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
     <div class="shadow" style="padding: 25px; border-radius: 25px; background-color:white;">
         <div class="row" style="margin-left: 0px;margin-right: 0px;">
@@ -62,6 +61,8 @@
                                     <input type="radio" id="mediana" name="tamañoPizza" class="custom-control-input" checked="">
                                     <label class="custom-control-label" for="mediana">Mediana</label>
                                 </div>
+                                <br />
+                                <button type="button" onclick="tabSalsa()" class="btn btn-primary">Siguiente</button>
                             </div>
                         </div>
                     </div>
@@ -104,6 +105,7 @@
                                     <input type="radio" id="mediana" name="tamañoPizza" class="custom-control-input" checked="">
                                     <label class="custom-control-label" for="mediana">Mediana</label>
                                 </div>
+                                <button type="button" onclick="tabIngredientes()" class="btn btn-primary">Siguiente</button>
                             </div>
                         </div>
                     </div>
@@ -116,7 +118,10 @@
 
 <script>
     function tabSalsa() {
-        document.getElementById("v-pills-home-tab").setAttribute('active', 'false')
-        document.getElementById("v-pills-profile-tab").setAttribute('active', 'true')
+        $('#v-pills-profile-tab').tab('show');
     }
+    function ingredientes() {
+        $('#v-pills-profile-tab').tab('show');
+    }
+
 </script>
