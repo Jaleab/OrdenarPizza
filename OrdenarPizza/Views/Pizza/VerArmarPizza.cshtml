@@ -19,8 +19,9 @@
                     <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Ingredientes</a>
                 </div>
             </div>
-            @using (Html.BeginForm("CalificarCCQT", "Evaluacion", new { carne = ViewBag.carne }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("OrdenarPizza", "Pizza", new { }, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
+                @Html.AntiForgeryToken()
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="row">
@@ -31,34 +32,34 @@
                             <div class="col-sm">
                                 <h3>Masa</h3>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="original" name="TipoMasa" class="custom-control-input" checked="">
+                                    <input type="radio" id="original" name="tipoMasa" value="Original" class="custom-control-input" checked="">
                                     <label class="custom-control-label" for="original">Original</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="sarten" name="TipoMasa" class="custom-control-input">
+                                    <input type="radio" id="sarten" name="tipoMasa" value="Sartén" class="custom-control-input">
                                     <label class="custom-control-label" for="sarten">Sartén</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="bordeConQueso" name="TipoMasa" class="custom-control-input" checked="">
+                                    <input type="radio" id="bordeConQueso" name="tipoMasa" value="Borde con queso" class="custom-control-input">
                                     <label class="custom-control-label" for="bordeConQueso">Borde con queso</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="crunchy" name="TipoMasa" class="custom-control-input">
+                                    <input type="radio" id="crunchy" name="tipoMasa" value="Crunchy" class="custom-control-input">
                                     <label class="custom-control-label" for="crunchy">Crunchy</label>
                                 </div>
                             </div>
                             <div class="col-sm ">
                                 <h3>Tamaño</h3>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="dominator" name="tamañoPizza" class="custom-control-input" checked="">
+                                    <input type="radio" id="dominator" name="tamañoPizza" value="Dominator" class="custom-control-input" checked="">
                                     <label class="custom-control-label" for="dominator">Dominator</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="grande" name="tamañoPizza" class="custom-control-input">
+                                    <input type="radio" id="grande" name="tamañoPizza" value="Grande" class="custom-control-input">
                                     <label class="custom-control-label" for="grande">Grande</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="mediana" name="tamañoPizza" class="custom-control-input" checked="">
+                                    <input type="radio" id="mediana" name="tamañoPizza" value="Mediana" class="custom-control-input">
                                     <label class="custom-control-label" for="mediana">Mediana</label>
                                 </div>
                                 <br />
@@ -74,42 +75,16 @@
                             </div>
                             <div class="col-sm">
                                 <h3>Salsa</h3>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="original" name="TipoMasa" class="custom-control-input" checked="">
-                                    <label class="custom-control-label" for="original">Original</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="sarten" name="TipoMasa" class="custom-control-input">
-                                    <label class="custom-control-label" for="sarten">Sartén</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="bordeConQueso" name="TipoMasa" class="custom-control-input" checked="">
-                                    <label class="custom-control-label" for="bordeConQueso">Borde con queso</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="crunchy" name="TipoMasa" class="custom-control-input">
-                                    <label class="custom-control-label" for="crunchy">Crunchy</label>
-                                </div>
                             </div>
                             <div class="col-sm ">
                                 <h3>Queso</h3>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="dominator" name="tamañoPizza" class="custom-control-input" checked="">
-                                    <label class="custom-control-label" for="dominator">Dominator</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="grande" name="tamañoPizza" class="custom-control-input">
-                                    <label class="custom-control-label" for="grande">Grande</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="mediana" name="tamañoPizza" class="custom-control-input" checked="">
-                                    <label class="custom-control-label" for="mediana">Mediana</label>
-                                </div>
                                 <button type="button" onclick="tabIngredientes()" class="btn btn-primary">Siguiente</button>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"></div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-message-tab">
+                        <input type="submit" value="Ordenar" class="btn btn-primary" />
+                    </div>
                 </div>
             }
         </div>
