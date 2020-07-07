@@ -18,7 +18,7 @@
     <link href="@Url.Content("~/Content/Estilos/EstilosFormulario.css")" rel="stylesheet" type="text/css" />
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/Home/Index">Pizzeria</a>
+        <a class="navbar-brand" href="/Home/Index">Jaleab's Pizza</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,7 +26,8 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Pizza/VerArmarPizza">Armar pizza<span class="sr-only">(current)</span></a>
+
+                        @*<a class="nav-link" href="/Pizza/VerArmarPizza">Armar pizza<span class="sr-only">(current)</span></a>*@
                 </li>
             </ul>
         </div>
@@ -39,6 +40,7 @@
         <div class="container">
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+
                     <li>@Html.ActionLink("Arme su pizza", "VerArmarPizza", "Pizza")</li>
                 </ul>
             </div>
