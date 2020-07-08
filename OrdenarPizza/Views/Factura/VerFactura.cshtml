@@ -41,9 +41,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="guardarDireccion()">Guardar</button>
-                    <input type="submit" value="Guardar" class="btn btn-success" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="irArmarPizza()">Regresar</button>
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
                 </div>
              }
         </div>
@@ -135,6 +134,10 @@
     $(window).on('load', function () {
         $('#direccion').modal('show');
     });
+
+    function irArmarPizza() {
+        window.location = '/Pizza/VerArmarPizza';
+    }
 
     function guardarDireccion() {
         var canton = document.getElementById("cantonInput").value;
