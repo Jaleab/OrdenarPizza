@@ -10,6 +10,10 @@ namespace OrdenarPizza.Controllers
     {
         public ActionResult Index()
         {
+            if (TempData["mensaje"] != null)
+            {
+                ViewBag.mensaje = TempData["mensaje"];
+            }
             return View();
         }
 
