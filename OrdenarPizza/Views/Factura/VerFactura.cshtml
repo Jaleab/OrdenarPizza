@@ -4,7 +4,7 @@
     ViewBag.Title = "VerFactura";
 }
 
-<div class="modal fade modalZ" id="direccionCambiar" tabindex="1000" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade modalZ" id="direccion" tabindex="1000" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,26 +13,39 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label class="col-form-label" for="inputDefault">Provincia</label>
-                            <input type="text" class="form-control" placeholder="Digite su pronvicia" id="inputDefault">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { onsubmit = "return guardarDireccion();" }))
+            {
+                <div class="modal-body">
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-form-label" for="provinciaInput">Provincia</label>
+                                <input type="text" class="form-control" placeholder="Digite su provincia" id="provinciaInput" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-form-label" for="cantonInput">Cantón</label>
+                                <input type="text" class="form-control" placeholder="Digite su cantón" id="cantonInput" required>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label class="col-form-label" for="inputDefault">Cantón</label>
-                            <input type="text" class="form-control" placeholder="Digite su cantón" id="inputDefault">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-form-label" for="telefonoInput">Número telefónico</label>
+                                <input type="tel" class="form-control" placeholder="Digite su número telefónico" id="telefonoInput" required value="" pattern="[0-9]{4}[0-9]{4}">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarDireccion()">Guardar</button>
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                </div>
+             }
         </div>
     </div>
 </div>
@@ -43,17 +56,8 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <address>
-                        Canton, Provincia
-                        <br>
-                        Número de teléfono:
-                        <br />
-                        (+506) Número
+                        <p id="informacion"></p>
                     </address>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                    <p>
-                        <em>Jaleab's Pizza</em>
-                    </p>
                 </div>
             </div>
             <div class="row">
@@ -65,27 +69,26 @@
                         <tr>
                             <th>Producto</th>
                             <th class="text-center">Price</th>
-                            <th class="text-center">Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="col-md-9"><em>@Html.DisplayNameFor(model => model.tipoMasa): @Html.DisplayFor(model => model.tipoMasa)</em></h4></td>
+                            <td class="col-md-9">
+                                <em>
+                                    @Html.DisplayNameFor(model => model.tipoMasa): @Html.DisplayFor(model => model.tipoMasa)
+                                </em>
+                            </td>
                             <td class="col-md-1 text-center">$13</td>
-                            <td class="col-md-1 text-center">$26</td>
                         </tr>
                         <tr>
-                            <td class="col-md-9"><em>Lebanese Cabbage Salad</em></h4></td>
-                            <td class="col-md-1 text-center">$8</td>
-                            <td class="col-md-1 text-center">$8</td>
+                            <td class="col-md-9">
+                                <em>
+                                    @Html.DisplayNameFor(model => model.tamañoPizza): @Html.DisplayFor(model => model.tamañoPizza)
+                                </em>
+                            </td>
+                            <td class="col-md-1 text-center">$13</td>
                         </tr>
                         <tr>
-                            <td class="col-md-9"><em>Baked Tart with Thyme and Garlic</em></td>
-                            <td class="col-md-1 text-center">$16</td>
-                            <td class="col-md-1 text-center">$48</td>
-                        </tr>
-                        <tr>
-                            <td>   </td>
                             <td class="text-right">
                                 <p>
                                     <strong>Subtotal: </strong>
@@ -104,14 +107,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>   </td>
                             <td class="text-right"><h4><strong>Total: </strong></h4></td>
                             <td class="text-center text-danger"><h4><strong>$costoTotal</strong></h4></td>
                         </tr>
                     </tbody>
-                </table>
+                    </table>
                 <button type="button" class="btn btn-success btn-lg btn-block">
-                    Comprar   <span class="glyphicon glyphicon-chevron-right"></span>
+                    Comprar<span class="glyphicon glyphicon-chevron-right"></span>
                 </button>
             </div>
         </div>
@@ -133,6 +135,17 @@
     $(window).on('load', function () {
         $('#direccion').modal('show');
     });
+
+    function guardarDireccion() {
+        var canton = document.getElementById("cantonInput").value;
+        var provincia = document.getElementById("provinciaInput").value;
+        var numeroTelefonico = document.getElementById("telefonoInput").value;
+        if (canton != null && provincia != null && numeroTelefonico != null) {
+            document.getElementById("informacion").innerHTML = canton + ', ' + provincia + '<br> Número de teléfono: <br> (+506) ' + numeroTelefonico;
+        }
+        $('#direccion').modal('hide');
+        return false;
+    }
 </script>
 
 
