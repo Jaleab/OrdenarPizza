@@ -9,8 +9,8 @@ namespace OrdenarPizza.Models
         [DisplayName("Tipo de masa")]
         public string tipoMasa { get; set; }
 
-        [DisplayName("Descripción del tipo de masa")]
-        public string descripcionTipoMasa { get; set; }
+        //[DisplayName("Descripción del tipo de masa")]
+        //public string descripcionTipoMasa { get; set; }
 
         [Required(ErrorMessage = "*El tamaño de la pizza es requerido.")]
         [DisplayName("Tamaño")]
@@ -31,7 +31,7 @@ namespace OrdenarPizza.Models
         [DisplayName("Ingredientes")]
         public string[] ingredientes { get; set; }
 
-        [DisplayName("Costo de los ingredientes")]
-        public double[] costoIngredientes { get; set; }
+        //[DisplayName("Costo de los ingredientes")]
+        //public double[] costoIngredientes { get; set; }
     }
 }

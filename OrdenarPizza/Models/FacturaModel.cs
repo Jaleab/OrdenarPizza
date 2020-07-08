@@ -17,13 +17,19 @@ namespace OrdenarPizza.Models
         [DisplayName("Número de teléfono")]
         public string numeroTelefónico { get; set; }
 
-        [DisplayName("Total:")]
-        public string costoTotal { get; set; }
+        [DisplayName("Precio tipo masa:")]
+        public double precioTipoMasa { get; set; }
 
-        [DisplayName("Impuesto:")]
-        public string costoImpuesto { get; set; }
+        [DisplayName("Precio tamaño de la pizza:")]
+        public double precioTamaño { get; set; }
 
         [DisplayName("Subtotal:")]
-        public string subtotal { get; set; }
+        public double subtotal { get; set; }
+
+        [DisplayName("Impuesto:")]
+        public double costoImpuesto { get; set; }
+
+        [DisplayName("Total:")]
+        public double costoTotal { get; set; }
     }
 }
