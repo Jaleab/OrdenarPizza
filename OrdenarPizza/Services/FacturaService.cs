@@ -1,8 +1,4 @@
 ﻿using OrdenarPizza.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace OrdenarPizza.Services
 {
@@ -14,7 +10,7 @@ namespace OrdenarPizza.Services
                     case "Original":
                         factura.precioTipoMasa = 0.00;
                         break;
-                    case "Al sartén":
+                    case "Sartén":
                         factura.precioTipoMasa = 1.99;
                         break;
                     case "Crunchy":
