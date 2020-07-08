@@ -15,44 +15,44 @@
             </div>
             @using (Html.BeginForm(null, null, FormMethod.Post, new { onsubmit = "return guardarDireccion();" }))
             {
-                <div class="modal-body">
-                    @Html.AntiForgeryToken()
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label class="col-form-label" for="nombreInput">Nombre completo</label>
-                                <input type="text" title="Nombre con apellidos preferiblemente" class="form-control" placeholder="Digite nombre completo" id="nombreInput" required value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label class="col-form-label" for="telefonoInput">Número telefónico</label>
-                                <input type="tel" title="Número telefónico con esta estructura 1234-5678" class="form-control" placeholder="1234-5678" id="telefonoInput" required value="" pattern="[0-9]{4}-[0-9]{4}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label class="col-form-label" for="cantonInput">Cantón</label>
-                                <input type="text" class="form-control" placeholder="Digite su cantón" id="cantonInput" required>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label class="col-form-label" for="provinciaInput">Provincia</label>
-                                <input type="text" class="form-control" placeholder="Digite su provincia" id="provinciaInput" required>
-                            </div>
+            <div class="modal-body">
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label" for="nombreInput">Nombre completo</label>
+                            <input type="text" title="Nombre con apellidos preferiblemente" class="form-control" placeholder="Digite nombre completo" id="nombreInput" required value="">
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="irArmarPizza()">Regresar</button>
-                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label" for="telefonoInput">Número telefónico</label>
+                            <input type="tel" title="Número telefónico con esta estructura 1234-5678" class="form-control" placeholder="1234-5678" id="telefonoInput" required value="" pattern="[0-9]{4}-[0-9]{4}">
+                        </div>
+                    </div>
                 </div>
-             }
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label" for="cantonInput">Cantón</label>
+                            <input type="text" class="form-control" placeholder="Digite su cantón" id="cantonInput" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label" for="provinciaInput">Provincia</label>
+                            <input type="text" class="form-control" placeholder="Digite su provincia" id="provinciaInput" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="irArmarPizza()">Regresar</button>
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+            }
         </div>
     </div>
 </div>
@@ -92,11 +92,11 @@
                             </td>
                             @if (ViewBag.pizza.tipoMasa == "Original")
                             {
-                                <td class="col-md-1 text-center">$0.00</td>
+                            <td class="col-md-1 text-center">$0.00</td>
                             }
                             else
                             {
-                                <td class="col-md-1 text-center">$@Model.precioTipoMasa.ToString("#.##")</td>
+                            <td class="col-md-1 text-center">$@Model.precioTipoMasa.ToString("#.##")</td>
                             }
                         </tr>
                         <tr>
@@ -110,23 +110,34 @@
                         <tr>
                             <td class="col-md-9">
                                 <em>
+                                    Salsa: @ViewBag.pizza.salsa<br />
+                                </em>
+                                <br />
+                                <em>
+                                    Queso: @ViewBag.pizza.queso<br />
+                                </em>
+                                <br />
+                                <em>
                                     Ingredientes: <br />
                                 </em>
                                 @for (var i = 0; ViewBag.pizza.ingredientes != null && i < (ViewBag.pizza.ingredientes.Length - 1); ++i)
                                 {
-                                    if ((i % 3)+1 != 3)
-                                    {
-                                        string hilera = ViewBag.pizza.ingredientes[i] + ", ";
-                                        @hilera
-                                    }
-                                    else
-                                    {
-                                        string hilera = ViewBag.pizza.ingredientes[i] + "\n";
-                                        @hilera
-                                        <br>
-                                    }
+                                if ((i % 3) + 1 != 3)
+                                {
+                                string hilera = ViewBag.pizza.ingredientes[i] + ", ";
+                                @hilera
                                 }
+                                else
+                                {
+                                string hilera = ViewBag.pizza.ingredientes[i] + "\n";
+                                @hilera
+                                <br>
+                                }
+                                }
+                                @if (ViewBag.pizza.ingredientes != null)
+                                {
                                 @ViewBag.pizza.ingredientes[ViewBag.pizza.ingredientes.Length - 1]
+                                }
                             </td>
                             <td class="col-md-1 text-center"></td>
                         </tr>
@@ -153,7 +164,7 @@
                             <td class="text-center text-danger"><h4><strong>$@Model.costoTotal.ToString("#.##")</strong></h4></td>
                         </tr>
                     </tbody>
-                    </table>
+                </table>
                 <button type="button" class="btn btn-success btn-lg btn-block" onclick="irIndex()">
                     Comprar<span class="glyphicon glyphicon-chevron-right"></span>
                 </button>
