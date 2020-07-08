@@ -4,7 +4,7 @@
     ViewBag.Title = "VerFactura";
 }
 
-<div class="modal fade modalZ" id="direccionCambiar" tabindex="1000" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade modalZ" id="direccion" tabindex="1000" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,14 +20,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="col-form-label" for="provinciaInput">Provincia</label>
-                                <input type="text" class="form-control" placeholder="Digite su provincia" id="provinciaInput" required>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label class="col-form-label" for="cantonInput">Cantón</label>
-                                <input type="text" class="form-control" placeholder="Digite su cantón" id="cantonInput" required>
+                                <label class="col-form-label" for="nombreInput">Nombre completo</label>
+                                <input type="text" title="Nombre con apellidos preferiblemente" class="form-control" placeholder="Digite nombre completo" id="nombreInput" required value="">
                             </div>
                         </div>
                     </div>
@@ -36,6 +30,20 @@
                             <div class="form-group">
                                 <label class="col-form-label" for="telefonoInput">Número telefónico</label>
                                 <input type="tel" title="Número telefónico con esta estructura 1234-5678" class="form-control" placeholder="1234-5678" id="telefonoInput" required value="" pattern="[0-9]{4}-[0-9]{4}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-form-label" for="cantonInput">Cantón</label>
+                                <input type="text" class="form-control" placeholder="Digite su cantón" id="cantonInput" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-form-label" for="provinciaInput">Provincia</label>
+                                <input type="text" class="form-control" placeholder="Digite su provincia" id="provinciaInput" required>
                             </div>
                         </div>
                     </div>
@@ -55,10 +63,13 @@
     <div class="row" style="margin-left: 0px;margin-right: 0px;">
         <div class="center well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
             <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="col">
                     <address>
                         <p id="informacion"></p>
                     </address>
+                </div>
+                <div class="col">
+                    <p id="domicilio"></p>
                 </div>
             </div>
             <div class="row">
@@ -79,7 +90,14 @@
                                     Tipo de masa: @ViewBag.pizza.tipoMasa
                                 </em>
                             </td>
-                            <td class="col-md-1 text-center">$@Model.precioTipoMasa.ToString("#.##")</td>
+                            @if (ViewBag.pizza.tipoMasa == "Original")
+                            {
+                                <td class="col-md-1 text-center">$0.00</td>
+                            }
+                            else
+                            {
+                                <td class="col-md-1 text-center">$@Model.precioTipoMasa.ToString("#.##")</td>
+                            }
                         </tr>
                         <tr>
                             <td class="col-md-9">
@@ -136,7 +154,7 @@
                         </tr>
                     </tbody>
                     </table>
-                <button type="button" class="btn btn-success btn-lg btn-block">
+                <button type="button" class="btn btn-success btn-lg btn-block" onclick="irIndex()">
                     Comprar<span class="glyphicon glyphicon-chevron-right"></span>
                 </button>
             </div>
@@ -164,13 +182,17 @@
         window.location = '/Pizza/VerArmarPizza';
     }
 
+    function irIndex() {
+        window.location = '/Home/Index';
+    }
+
     function guardarDireccion() {
         var canton = document.getElementById("cantonInput").value;
+        var cliente = document.getElementById("nombreInput").value;
         var provincia = document.getElementById("provinciaInput").value;
         var numeroTelefonico = document.getElementById("telefonoInput").value;
-        if (canton != null && provincia != null && numeroTelefonico != null) {
-            document.getElementById("informacion").innerHTML = canton + ', ' + provincia + '<br> Número de teléfono: <br> (+506) ' + numeroTelefonico;
-        }
+        document.getElementById("informacion").innerHTML = 'Nombre del cliente: <br>' + cliente + '<br><br>Lugar de entrega: <br>' + canton + ', ' + provincia;
+        document.getElementById("domicilio").innerHTML = 'Número de teléfono: <br> (+506) ' + numeroTelefonico;
         $('#direccion').modal('hide');
         return false;
     }

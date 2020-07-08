@@ -35,7 +35,7 @@ namespace OrdenarPizza.Services
                 switch (tamaño)
                 {
                     case "Mediana":
-                        factura.precioTamaño = 8.00;
+                        factura.precioTamaño = 7.99;
                         break;
                     case "Grande":
                         factura.precioTamaño = 11.99;

@@ -12,6 +12,9 @@ namespace OrdenarPizza.Controllers
         // GET: Pizza
         public ActionResult VerArmarPizza()
         {
+            if (TempData["mensaje"] != null) {
+                ViewBag.mensaje = TempData["mensaje"];
+            }
             return View();
         }
     }

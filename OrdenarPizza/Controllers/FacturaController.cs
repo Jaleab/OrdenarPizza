@@ -17,5 +17,10 @@ namespace OrdenarPizza.Controllers
             servicioFactura.setTotales(factura);                
             return View(factura);
         }
+
+        public ActionResult CompraRealizada() {
+            TempData["mensaje"] = "Compra realizada";
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
