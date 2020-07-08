@@ -1,10 +1,10 @@
-﻿@model OrdenarPizza.Models.PizzaModel
+﻿@model OrdenarPizza.Models.FacturaModel
 
 @{
     ViewBag.Title = "VerFactura";
 }
 
-<div class="modal fade modalZ" id="direccion" tabindex="1000" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade modalZ" id="direccionCambiar" tabindex="1000" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -69,25 +69,48 @@
                     <thead>
                         <tr>
                             <th>Producto</th>
-                            <th class="text-center">Price</th>
+                            <th class="text-center">Precio</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="col-md-9">
                                 <em>
-                                    @Html.DisplayNameFor(model => model.tipoMasa): @Html.DisplayFor(model => model.tipoMasa)
+                                    Tipo de masa: @ViewBag.pizza.tipoMasa
                                 </em>
                             </td>
-                            <td class="col-md-1 text-center">$13</td>
+                            <td class="col-md-1 text-center">$@Model.precioTipoMasa.ToString("#.##")</td>
                         </tr>
                         <tr>
                             <td class="col-md-9">
                                 <em>
-                                    @Html.DisplayNameFor(model => model.tamañoPizza): @Html.DisplayFor(model => model.tamañoPizza)
+                                    Tamaño: @ViewBag.pizza.tamañoPizza
                                 </em>
                             </td>
-                            <td class="col-md-1 text-center">$13</td>
+                            <td class="col-md-1 text-center">$@Model.precioTamaño.ToString("#.##")</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-9">
+                                <em>
+                                    Ingredientes: <br />
+                                </em>
+                                @for (var i = 0; ViewBag.pizza.ingredientes != null && i < (ViewBag.pizza.ingredientes.Length - 1); ++i)
+                                {
+                                    if ((i % 3)+1 != 3)
+                                    {
+                                        string hilera = ViewBag.pizza.ingredientes[i] + ", ";
+                                        @hilera
+                                    }
+                                    else
+                                    {
+                                        string hilera = ViewBag.pizza.ingredientes[i] + "\n";
+                                        @hilera
+                                        <br>
+                                    }
+                                }
+                                @ViewBag.pizza.ingredientes[ViewBag.pizza.ingredientes.Length - 1]
+                            </td>
+                            <td class="col-md-1 text-center"></td>
                         </tr>
                         <tr>
                             <td class="text-right">
@@ -100,16 +123,16 @@
                             </td>
                             <td class="text-center">
                                 <p>
-                                    <strong>costoPrevio</strong>
+                                    <strong>$@Model.subtotal.ToString("#.##")</strong>
                                 </p>
                                 <p>
-                                    <strong>costoImpuesto</strong>
+                                    <strong>$@Model.costoImpuesto.ToString("#.##")</strong>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                            <td class="text-center text-danger"><h4><strong>$costoTotal</strong></h4></td>
+                            <td class="text-center text-danger"><h4><strong>$@Model.costoTotal.ToString("#.##")</strong></h4></td>
                         </tr>
                     </tbody>
                     </table>
